@@ -48,21 +48,17 @@ def checkModel():
         print('DialogRPT-human-vs-rand exist')
 
 
+if __name__=="__main__":
 
-packages = ['nltk==3.6.2',
-            'transformers==4.6.0',
-            'torch',
-            'Flask_SocketIO==5.0.3',
-            'numpy==1.18.5',
-            'Flask==1.1.2',
-            'tensorflow==2.1.0']
+    packages = ['nltk==3.6.2',
+                'transformers==4.6.0',
+                'torch',
+                'Flask_SocketIO==5.0.3',
+                'numpy==1.18.5',
+                'Flask==1.1.2',
+                'tensorflow==2.1.0']
 
-for package in packages :
-    install(package)
+    for package in packages :
+        install(package)
         
-checkModel()
-
-
-
-
-
+    checkModel()
