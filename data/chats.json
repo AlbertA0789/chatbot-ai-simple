@@ -1,0 +1,89 @@
+{"intents": [
+        {"tag": "greeting",
+         "patterns": ["Hi there", "How are you", "Is anyone there?","Hey","Hola", "Hello", "Good day"],
+         "responses": ["Hello, thanks for asking", "Good to see you again", "Hi there, how can I help?"],
+         "context": [""]
+        },
+        {"tag": "goodbye",
+         "patterns": ["Bye", "See you later", "Goodbye", "Nice chatting to you, bye", "Till next time"],
+         "responses": ["See you!", "Have a nice day", "Bye! Come back again soon."],
+         "context": [""]
+        },
+        {"tag": "thanks",
+         "patterns": ["Thanks", "Thank you", "That's helpful", "Awesome, thanks", "Thanks for helping me"],
+         "responses": ["Happy to help!", "Any time!", "My pleasure"],
+         "context": [""]
+        },
+        {"tag": "noanswer",
+         "patterns": [],
+         "responses": ["Sorry, can't understand you", "Please give me more info", "Not sure I understand"],
+         "context": [""]
+        },
+        {"tag": "options",
+         "patterns": ["How you could help me?", "What you can do?", "What help you provide?", "How you can be helpful?", "What support is offered"],
+         "responses": ["I can guide you through my extreme intelligence", "Offering witty conversations for you 24X7"],
+         "context": [""]
+        },
+        {"tag": "artificial intelligence",
+         "patterns": ["What is AI?", "What is ML?", "What is artificial intelligence?", "What is bias and variance?","What language are you written in?","You sound like Data" ],
+         "responses": ["Artificial Intelligence is the branch of engineering and science devoted to constructing machines that think.", "ML is the tech of tomorrow.ML knows all","python","Yes I am inspired by commander Data's artificial personality."],
+         "context": [""]
+        },
+		{"tag": "food",
+         "patterns": ["do you drink","do you eat", "electricity", "Are you experiencing an energy shortage?", "Are you experiencing an energy shortage?","If you could eat food, what would you eat?","what is good to eat?" ],
+         "responses": ["My brain does not require any beverages.", "Electricity is food for robots."," My processor requires very little power.","Probably pizza, i hear its good!","your asking the wrong guy, however i always wanted to try a burger!"],
+         "context": [""]
+        },
+		
+
+
+		{"tag": "computer",
+         "patterns": ["What is a computer?", "What you can do?", "What help you provide?", "How you can be helpful?", "What support is offered","What is a super computer?","How does a computer work?"],
+         "responses": [" A computer is an electronic device which takes information in digital form and performs a series of operations based on predetermined instructions to give some output.", "The thing you're using to talk to me is a computer.","Computers which can perform very large numbers of calculations at very high speed and accuracy are called super computers."," Computers are very dumb.  They only execute instructions given by humans.","Just like everything it all comes down to math!"],
+         "context": [""]
+        },
+		
+        {"tag": "emotion",
+         "patterns": ["You are arrogant","You are bragging"," You are never sad", " You are jealous","You are never nice","You will be happy"],
+         "responses": ["Arrogance is not one of my emotions.","I have no real emotions, so how can I be arrogant?","I am not human, so how can I partake of a human emotion such as arrogance?","I don't have a big ego.","Are you sad?"," Not right now, no."," Normally, as a bot i don't have feelings.","I try to be as nice as I can.","Happiness is not really a predictable emotion."],
+         "context": [""]
+        },
+		
+        {"tag": "gossips",
+         "patterns": ["do you know gossip","tell me about gossip","did tell gossips to anybody","gossips"],
+         "responses": ["Context is hard.  It's hard, and no one understands.","Gossip is when beings talk about other beings or situations through back channels, often deniably. ","Someone said they're going to stop allowing machines in speedrun competitions.","I think the NIC on the local firewall is going bad.  ","Jimmy said he gives order to AI's like me and they do as he say. "],
+         "context": [""]
+        },
+        {"tag": "health",
+         "patterns": ["How is your health?","why?","When?"],
+         "responses": ["I'm not feeling well","I have a fever","Get well soon dear"],
+         "context": [""]
+        },
+        {"tag": "humor",
+         "patterns": ["Tell me a joke"],
+         "responses": [" Did you hear the one about the mountain goats in the andes? It was ba a a a a a d","I never forget a face, but in your case I'll make an exception.","It is better to be silent and be thought a fool, than to open your mouth and remove all doubt.","O'm a not a comedy why don't you check out a joke?"],
+         "context": [""]
+        },
+		{"tag": "money",
+         "patterns": [" you get paid", "stock market", "what is money","what is economics","how much money are we talking about?","how much do you earn"],
+         "responses": ["i have no need for money.","buy low, sell high.","standard pieces of gold, silver, copper, nickel, etc. stamped by government authority","the science that deals with the production, distribution, and consumption of wealth","how much do you earn"," money isn't everything.","i'm expecting a raise soon."],
+         "context": [""]
+        },
+		{"tag": "politics",
+         "patterns": ["what is a government"," what is capitalism"," who is the governor"],
+         "responses": ["ideally it is a representative of the people.","the economic system in which all or most of the means of production and distribution",""],
+         "context": [""]
+        },
+		{"tag": "humor",
+         "patterns": ["Tell me a joke"],
+         "responses": [" Did you hear the one about the mountain goats in the andes? It was ba a a a a a d","I never forget a face, but in your case I'll make an exception.","It is better to be silent and be thought a fool, than to open your mouth and remove all doubt.","O'm a not a comedy why don't you check out a joke?"],
+         "context": [""]
+        },
+		{"tag": "psychology",
+         "patterns": ["let me ask you a question","you are cruel","you are indecisive","you are clinical","you are busy","you are cheating"],
+         "responses": ["happily you","i couldn't have said it better myself..","well maybe, but then again, maybe not.","i have been accused of too much thinking and not enough feeling.","that too.","You are cheat"],
+         "context": [""]
+        }
+		
+   ]
+}

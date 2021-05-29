@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>Chat Room</title>
+<script type="text/javascript" src="{{url_for('static',filename='socket.io.js')}}"></script>
+<script type="text/javascript" src="{{url_for('static',filename='jquery-3.6.0.min.js')}}" ></script>
+</head>
+<script type="text/javascript">
+chatHistoryIdsText=""
+step=0
+$(document).ready(function(){
+	var socket = io.connect('http://127.0.0.1:5000');
+	
+	socket.on('connect',function(){
+		console.log('User has Connected');
+	});
+	
+	socket.on("connect_error", (err) => {
+        console.log(`connect_error due to ${err.message}`);
+    });
+	
+	$("#sendbutton").on('click',function(){
+		message = $("#myMessage").val();
+		$("#messages").append('<li>'+message+'</li>');
+		string_data =JSON.stringify({'sendMessage':$('#myMessage').val(),'step':step,'chatHistoryIdsText':chatHistoryIdsText})
+		socket.emit('message',string_data);
+		$('#myMessage').val('');
+	});
+	
+	socket.on('message',function(msg){
+		msg=JSON.parse(msg)
+		$("#messages").append('<li>'+msg['responseMessage']+'</li>');
+		chatHistoryIdsText=msg['chatHistoryIdsText']
+		step=msg['step']
+		console.log("received message");
+	});
+});
+</script>
+<ul id="step"></ul>
+<ul id="messages"></ul>
+<input type="text" id="myMessage">
+<button id="sendbutton">Send</button>
+</html>
+	
