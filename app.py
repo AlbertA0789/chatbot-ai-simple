@@ -217,7 +217,18 @@ def response(msgs,tokenizerGPT,modelGPT,chatHistoryIds=None,step=None):
         res = "I am written in Python."   
     else:
         res=None
-        resp,chatHistoryIds = ptBotResponse(msgs,tokenizerGPT,modelGPT,chatHistoryIds,step=step)
+        existBadWord=False
+        with open (os.path.join(os.getcwd(),'badWords.json'),'r') as f:
+           badWords=json.load(f)
+        
+        for word in badWords:
+            if word in msgs.split():
+                existBadWord=True
+
+        if existBadWord :
+            res='I do not like to talk about that'    
+        else:
+            resp,chatHistoryIds = ptBotResponse(msgs,tokenizerGPT,modelGPT,chatHistoryIds,step=step)
         
     if (chatHistoryIds==None):
         chatHistoryIds=""
