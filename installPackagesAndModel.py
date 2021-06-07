@@ -3,9 +3,18 @@ import subprocess
 import os
 import json
 
+import re
+import importlib
+
 def install(package):
-    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
-    print (package)
+    packageTest=re.sub('[0-9 = .]','',package)
+    packageTest=packageTest.lower()
+    try : 
+       importlib.import_module(packageTest)
+    except ModuleNotFoundError:
+       subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+    else :
+        print(package+' exist')
 
 
 def downloadDialoGPT(path,modelName):
