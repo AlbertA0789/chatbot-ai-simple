@@ -18,8 +18,7 @@ def install(package):
         requestVersion=re.findall('==.*',package)
         requestVersion=re.sub('==','',requestVersion[0])
         installVersion=version(packageTest)
-        print('requestVersion',requestVersion)
-        print('installVersion',installVersion)
+
         if str(requestVersion)==str(installVersion):
             print(package+' exist')
         else:
