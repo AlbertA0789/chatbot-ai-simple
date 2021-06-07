@@ -5,16 +5,27 @@ import json
 
 import re
 import importlib
-
 def install(package):
-    packageTest=re.sub('[0-9 = .]','',package)
+    packageTest=re.sub('==.*','',package)
     packageTest=packageTest.lower()
     try : 
-       importlib.import_module(packageTest)
+       importPackage = importlib.import_module(packageTest)
     except ModuleNotFoundError:
+       print('Installing {} ...'.format(package))
        subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+       print('Successfull installed '+package)
     else :
-        print(package+' exist')
+        requestVersion=re.findall('==.*',package)
+        requestVersion=re.sub('==','',requestVersion[0])
+        installVersion=version(packageTest)
+        print('requestVersion',requestVersion)
+        print('installVersion',installVersion)
+        if str(requestVersion)==str(installVersion):
+            print(package+' exist')
+        else:
+            print('Installing {} previously install version {} ...'.format(package,installVersion))
+            subprocess.check_call([sys.executable, "-m", "pip", "install","--upgrade",'--force-reinstall',package])
+            print('Successfull installed '+package)
 
 
 def downloadDialoGPT(path,modelName):
@@ -65,13 +76,14 @@ def checkFile():
     else:
         print('Bad words corpus exist')
 if __name__=="__main__":
-    packages = ['sentencepiece',
-               'transformers==4.6.0',
-               'torch',
-               'Flask_SocketIO==5.0.3',
-               'numpy==1.18.5',
-               'Flask==1.1.2',
-               'tensorflow==2.1.0']
+    packages = ['sentencepiece==0.1.95',
+           'torch==1.8.1+cu101',
+           'Flask_SocketIO==5.0.3',
+           'numpy==1.18.5',
+           'Flask==1.1.2',
+           'tensorflow==2.1.0',
+           'transformers==4.6.0',
+           'datasets==1.7.0']
 
     for package in packages :
         install(package)
