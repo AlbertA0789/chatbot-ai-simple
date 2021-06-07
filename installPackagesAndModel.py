@@ -76,6 +76,10 @@ if __name__=="__main__":
     for package in packages :
         install(package)
         
-    checkModel()
+print('Downloading Model..')        
+checkModel()
+print('Finish Downloading Model')
 
-    checkFile()
+print('Generating File...')
+checkFile()
+print('Finish Generating File')
