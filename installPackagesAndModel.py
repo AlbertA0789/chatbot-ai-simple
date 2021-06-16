@@ -2,10 +2,17 @@ import sys
 import subprocess
 import os
 import json
-
-import re
 import importlib
+try:
+    from importlib import metadata
+except ImportError: # for Python<3.8
+    import importlib_metadata as metadata
+import re
+
+
 def install(package):
+    #subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+    #print (package)
     packageTest=re.sub('==.*','',package)
     packageTest=packageTest.lower()
     try : 
@@ -13,18 +20,26 @@ def install(package):
     except ModuleNotFoundError:
        print('Installing {} ...'.format(package))
        subprocess.check_call([sys.executable, "-m", "pip", "install", package])
-       print('Successfull installed '+package)
+       print('Successfull installed {}\n'.format(package))
+
     else :
+        print(package)
         requestVersion=re.findall('==.*',package)
-        requestVersion=re.sub('==','',requestVersion[0])
-        installVersion=version(packageTest)
+        if requestVersion!=[]:
+          requestVersion=re.sub('==','',requestVersion[0])
+
+        installVersion=metadata.version(packageTest)
 
         if str(requestVersion)==str(installVersion):
-            print(package+' exist')
+            print(package,' exist\n')
         else:
             print('Installing {} previously install version {} ...'.format(package,installVersion))
-            subprocess.check_call([sys.executable, "-m", "pip", "install","--upgrade",'--force-reinstall',package])
-            print('Successfull installed '+package)
+            try:
+              subprocess.check_call([sys.executable, "-m", "pip", "install","--upgrade",'--force-reinstall',package])
+            except Exception as e:
+              print('Fail to install package {}. \nReason : {}\n'.format(package,e))
+            else:
+              print('Successfull installed {}\n'.format(package))
 
 
 def downloadDialoGPT(path,modelName):
@@ -76,13 +91,13 @@ def checkFile():
         print('Bad words corpus exist')
 if __name__=="__main__":
     packages = ['sentencepiece==0.1.95',
-           'torch==1.8.1+cu101',
-           'Flask_SocketIO==5.0.3',
-           'numpy==1.18.5',
-           'Flask==1.1.2',
-           'tensorflow==2.1.0',
-           'transformers==4.6.0',
-           'datasets==1.7.0']
+                'jsonschema==3.0.2',
+                'torch==1.8.1+cu101',
+                'tensorflow==2.1.0',
+                'transformers==4.6.0',
+                'numpy==1.18.5',
+                'Flask==1.1.2',
+                'Flask_SocketIO==5.0.3']
 
     for package in packages :
         install(package)
